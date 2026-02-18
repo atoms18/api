@@ -1,9 +1,9 @@
+import { HttpStatus } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
 
-class DecryptDataResponse {
+export class DecryptDataResponse {
   @ApiProperty({
     type: String,
-    example: '',
   })
   payload: string;
 }
@@ -12,7 +12,7 @@ export class DecryptResponseDto {
   @ApiProperty({ type: Boolean })
   successful: boolean;
 
-  @ApiProperty({ example: '500', type: String })
+  @ApiProperty({ example: String(HttpStatus.OK), type: String })
   error_code: string;
 
   @ApiProperty({
