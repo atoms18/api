@@ -16,8 +16,21 @@ export class VerifyController {
   @HttpCode(HttpStatus.OK)
   public encrypt(
     @Body() encryptPayloadDto: EncryptPayloadDto,
-  ): Promise<EncryptResponseDto> {
-    return this.service.encrypt(encryptPayloadDto);
+  ): EncryptResponseDto {
+    try {
+      return {
+        successful: true,
+        error_code: String(HttpStatus.OK),
+        data: this.service.encrypt(encryptPayloadDto),
+      };
+    } catch (error) {
+      console.error(error);
+      return {
+        successful: false,
+        error_code: String(HttpStatus.INTERNAL_SERVER_ERROR),
+        data: error,
+      };
+    }
   }
 
   @ApiOkResponse({ type: DecryptResponseDto })
@@ -25,7 +38,20 @@ export class VerifyController {
   @HttpCode(HttpStatus.OK)
   public decrypt(
     @Body() decryptPayloadDto: DecryptPayloadDto,
-  ): Promise<DecryptResponseDto> {
-    return this.service.decrypt(decryptPayloadDto);
+  ): DecryptResponseDto {
+    try {
+      return {
+        successful: true,
+        error_code: String(HttpStatus.OK),
+        data: this.service.decrypt(decryptPayloadDto),
+      };
+    } catch (error) {
+      console.error(error);
+      return {
+        successful: false,
+        error_code: String(HttpStatus.INTERNAL_SERVER_ERROR),
+        data: error,
+      };
+    }
   }
 }
