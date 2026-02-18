@@ -24,8 +24,14 @@ $ npm i
     - [Example](#example) -->
 
 ## Getting Started
+
 ```sh
 $ npm run start
 ```
+> Public and private key can be set on public.pem and private.pen file.
+> 
 
 ## Usage
+```sh
+http://localhost:3000/ # port 3000 by default
+```
