@@ -28,7 +28,7 @@ export class VerifyController {
       return {
         successful: false,
         error_code: String(HttpStatus.INTERNAL_SERVER_ERROR),
-        data: error,
+        data: null,
       };
     }
   }
@@ -50,7 +50,7 @@ export class VerifyController {
       return {
         successful: false,
         error_code: String(HttpStatus.INTERNAL_SERVER_ERROR),
-        data: error,
+        data: null,
       };
     }
   }
