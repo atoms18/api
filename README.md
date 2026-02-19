@@ -31,6 +31,10 @@ $ npm run start
 > Public and private key can be set on public.pem and private.pen file.
 > 
 
+```sh
+$ npm run test
+```
+
 ## Usage
 ```sh
 http://localhost:3000/ # port 3000 by default
