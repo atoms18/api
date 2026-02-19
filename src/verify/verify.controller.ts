@@ -1,4 +1,11 @@
-import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpCode,
+  HttpException,
+  HttpStatus,
+  Post,
+} from '@nestjs/common';
 import { VerifyService } from './verify.service';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { EncryptPayloadDto } from './dto/encrypt-payload.dto';
@@ -25,11 +32,14 @@ export class VerifyController {
       };
     } catch (error) {
       console.error(error);
-      return {
-        successful: false,
-        error_code: String(HttpStatus.INTERNAL_SERVER_ERROR),
-        data: null,
-      };
+      throw new HttpException(
+        {
+          successful: false,
+          error_code: String(HttpStatus.INTERNAL_SERVER_ERROR),
+          data: null,
+        },
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 
@@ -47,11 +57,14 @@ export class VerifyController {
       };
     } catch (error) {
       console.error(error);
-      return {
-        successful: false,
-        error_code: String(HttpStatus.INTERNAL_SERVER_ERROR),
-        data: null,
-      };
+      throw new HttpException(
+        {
+          successful: false,
+          error_code: String(HttpStatus.INTERNAL_SERVER_ERROR),
+          data: null,
+        },
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 }
